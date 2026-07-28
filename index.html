@@ -3,289 +3,344 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Shanitha Alochana — Operations Support Systems Engineer</title>
+<title>Shanitha Alochana — RF Test Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0B1220;
-    --panel:#111B2E;
-    --panel-line:#22304A;
-    --trace:#5FC9A8;
-    --trace-dim:#3A5A54;
-    --amber:#D9A25C;
-    --text:#E9EDF3;
-    --muted:#8C97AA;
+    --bg:#120E19;
+    --panel:#1B1526;
+    --panel-2:#221A32;
+    --line:#362B48;
+    --text:#F1ECF7;
+    --muted:#A79EBC;
+    --g1:#5B21B6;
+    --g2:#C026D3;
+    --g3:#FBBF24;
+    --accent:#D446D9;
+    --gradient:linear-gradient(100deg, var(--g1) 0%, var(--g2) 52%, var(--g3) 100%);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
-  body{ background:var(--bg); color:var(--text); font-family:'IBM Plex Sans', sans-serif; line-height:1.65; }
+  body{
+    background:
+      radial-gradient(ellipse 80% 50% at 15% -10%, rgba(91,33,182,.25), transparent 60%),
+      radial-gradient(ellipse 70% 40% at 100% 0%, rgba(251,191,36,.10), transparent 55%),
+      var(--bg);
+    color:var(--text); font-family:'Inter', sans-serif; line-height:1.65; overflow-x:hidden;
+  }
   a{ color:inherit; }
-  ::selection{ background:var(--trace); color:#03130F; }
+  ::selection{ background:var(--g2); color:#120E19; }
+  .grad-text{ background:var(--gradient); -webkit-background-clip:text; background-clip:text; color:transparent; }
 
   header.nav{
     position:fixed; top:0; left:0; right:0; z-index:50;
     display:flex; justify-content:space-between; align-items:center;
-    padding:22px 6vw;
-    background:linear-gradient(to bottom, rgba(11,18,32,.94), rgba(11,18,32,0));
-    backdrop-filter:blur(8px);
+    padding:20px 6vw;
+    background:rgba(18,14,25,.78);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
   }
-  .callsign{ font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:.08em; color:var(--muted); }
-  nav.links{ display:flex; gap:24px; font-family:'IBM Plex Mono', monospace; font-size:12.5px; }
+  .callsign{ font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:.06em; color:var(--muted); display:flex; align-items:center; gap:9px; }
+  .callsign .dot{ width:7px; height:7px; border-radius:50%; background:var(--gradient); flex:none; }
+  nav.links{ display:flex; gap:24px; font-family:'JetBrains Mono', monospace; font-size:11.5px; }
   nav.links a{ color:var(--muted); text-decoration:none; transition:color .2s; }
   nav.links a:hover, nav.links a:focus-visible{ color:var(--text); }
-  nav.links a:focus-visible{ outline:1px solid var(--trace); outline-offset:4px; }
+  nav.links a:focus-visible{ outline:1px solid var(--g2); outline-offset:4px; }
 
-  .hero{ min-height:88svh; position:relative; display:flex; flex-direction:column; justify-content:center; padding:0 6vw; overflow:hidden; }
-  .hero-grid{
-    position:absolute; inset:0;
-    background-image:linear-gradient(var(--panel-line) 1px, transparent 1px), linear-gradient(90deg, var(--panel-line) 1px, transparent 1px);
-    background-size:64px 64px;
-    mask-image:radial-gradient(ellipse 75% 55% at 50% 40%, black 5%, transparent 70%);
-    opacity:.4;
-  }
-  #scope{ position:absolute; inset:0; width:100%; height:100%; display:block; opacity:.8; }
-  .hero-content{ position:relative; z-index:2; max-width:880px; }
-  .eyebrow{ font-family:'IBM Plex Mono', monospace; color:var(--amber); font-size:13px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:20px; }
-  h1.title{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:clamp(2.1rem, 5vw, 3.9rem); line-height:1.08; letter-spacing:-.01em; }
-  h1.title .accent{ color:var(--trace); }
-  .role-line{ margin-top:22px; font-size:clamp(1rem,1.7vw,1.15rem); color:var(--muted); max-width:620px; }
+  section{ position:relative; padding:110px 6vw; z-index:2; max-width:1320px; margin:0 auto; }
 
-  .hero-meta{ margin-top:38px; display:flex; gap:36px; flex-wrap:wrap; font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--muted); }
-  .hero-meta .stat b{ display:block; color:var(--trace); font-size:14px; margin-bottom:5px; font-weight:500; }
+  /* ---------- HERO ---------- */
+  .hero{ min-height:94svh; display:flex; align-items:center; padding:150px 6vw 70px; max-width:none; }
+  .hero-inner{ display:grid; grid-template-columns:1fr auto; gap:48px; align-items:start; max-width:1320px; margin:0 auto; width:100%; }
+  .eyebrow{ font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; margin-bottom:22px; display:flex; align-items:center; gap:10px; color:var(--muted); }
+  .eyebrow b{ color:var(--g3); font-weight:600; letter-spacing:.06em; }
+  h1.title{ font-family:'Unbounded', sans-serif; font-weight:600; font-size:clamp(2rem, 3.9vw, 3.4rem); line-height:1.14; letter-spacing:-.01em; }
+  .role-line{ margin-top:26px; font-size:clamp(1rem,1.5vw,1.1rem); color:var(--muted); max-width:52ch; }
 
-  .hero-actions{ margin-top:38px; display:flex; gap:16px; flex-wrap:wrap; }
-  .btn{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:.04em; padding:13px 24px; border-radius:2px; text-decoration:none; transition:all .2s; }
-  .btn.primary{ background:var(--trace); color:#04150F; }
-  .btn.primary:hover{ background:#7BDBBA; }
-  .btn.secondary{ border:1px solid var(--panel-line); color:var(--text); }
-  .btn.secondary:hover{ border-color:var(--trace); color:var(--trace); }
+  .career-log{ margin-top:36px; display:flex; flex-direction:column; }
+  .career-log .cl-row{ display:flex; justify-content:space-between; gap:20px; padding:13px 0; border-bottom:1px solid var(--line); font-size:13px; }
+  .career-log .cl-row:first-child{ border-top:1px solid var(--line); }
+  .career-log .cl-row b{ font-weight:600; color:var(--text); }
+  .career-log .cl-row span{ font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--muted); text-align:right; }
 
-  section{ position:relative; padding:100px 6vw; z-index:2; }
+  .hero-actions{ margin-top:36px; display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{ font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:.03em; padding:13px 26px; border-radius:3px; text-decoration:none; transition:all .2s; display:inline-block; }
+  .btn.primary{ background:var(--gradient); color:#160B1F; font-weight:600; }
+  .btn.primary:hover{ filter:brightness(1.12); }
+  .btn.secondary{ border:1px solid var(--line); color:var(--text); }
+  .btn.secondary:hover{ border-color:var(--g2); color:var(--g3); }
 
-  .snapshot{ padding:0; border-top:1px solid var(--panel-line); border-bottom:1px solid var(--panel-line); display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--panel-line); }
-  .snap-cell{ background:var(--bg); padding:30px 32px; }
-  .snap-cell .num{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:2rem; color:var(--trace); line-height:1; }
-  .snap-cell .lbl{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-top:10px; }
-  @media (max-width:800px){ .snapshot{ grid-template-columns:repeat(2,1fr); } }
+  /* waterfall */
+  .scope-wrap{ display:flex; flex-direction:column; align-items:stretch; width:168px; flex:none; }
+  .portrait-frame{ padding:3px; border-radius:10px; background:var(--gradient); box-shadow:0 14px 34px rgba(0,0,0,.4); }
+  .portrait-frame img{ display:block; width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:7px; }
+  .mini-scope{ margin-top:10px; background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:8px 10px; display:flex; align-items:center; gap:8px; }
+  .mini-scope .tag{ font-family:'JetBrains Mono', monospace; font-size:8.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); white-space:nowrap; }
+  canvas#waterfall{ display:block; flex:1; width:100%; height:22px; border-radius:3px; }
 
-  .channel-label{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--trace-dim); letter-spacing:.1em; text-transform:uppercase; margin-bottom:16px; display:flex; align-items:center; gap:12px; }
-  .channel-label::after{ content:''; flex:1; height:1px; background:var(--panel-line); }
-  h2.section-title{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:clamp(1.5rem, 2.4vw, 2.1rem); margin-bottom:38px; max-width:680px; }
+  /* ---------- shared section chrome ---------- */
+  .band-tab{ font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:18px; display:flex; align-items:center; gap:12px; color:var(--muted); }
+  .band-tab b{ color:var(--g3); font-weight:600; }
+  .band-tab::after{ content:''; flex:1; height:1px; background:var(--line); }
+  h2.section-title{ font-family:'Unbounded', sans-serif; font-weight:500; font-size:clamp(1.4rem, 2vw, 1.9rem); margin-bottom:42px; max-width:680px; }
 
-  .reveal{ opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
   .reveal.in{ opacity:1; transform:translateY(0); }
 
-  .about-grid{ display:grid; grid-template-columns:1.3fr .7fr; gap:60px; }
-  .about-grid p{ color:var(--muted); font-size:1.02rem; max-width:60ch; }
+  /* ---------- about ---------- */
+  .about-grid{ display:grid; grid-template-columns:1.25fr .75fr; gap:56px; }
+  .about-grid p{ color:var(--muted); font-size:1.02rem; max-width:58ch; }
   .about-grid p + p{ margin-top:16px; }
-  .readout{ border:1px solid var(--panel-line); border-radius:3px; padding:24px 26px; background:var(--panel); font-family:'IBM Plex Mono', monospace; font-size:12.5px; }
-  .readout .row{ display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--panel-line); color:var(--muted); gap:14px; }
-  .readout .row:last-child{ border-bottom:none; }
-  .readout .row span:last-child{ color:var(--text); text-align:right; }
+  .plate{ border:1px solid var(--line); border-radius:6px; padding:24px 26px; background:var(--panel); font-family:'JetBrains Mono', monospace; font-size:12.5px; }
+  .plate .row{ display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--line); color:var(--muted); gap:14px; }
+  .plate .row:last-child{ border-bottom:none; }
+  .plate .row span:last-child{ color:var(--text); text-align:right; }
 
-  .job{ border-top:1px solid var(--panel-line); padding:32px 0; display:grid; grid-template-columns:190px 1fr; gap:30px; }
-  .job:last-child{ border-bottom:1px solid var(--panel-line); }
-  .job .meta{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--trace-dim); letter-spacing:.04em; }
-  .job .dates{ display:block; color:var(--muted); margin-top:6px; }
-  .job-head{ cursor:pointer; display:flex; align-items:baseline; gap:12px; }
-  .job-head h3{ font-family:'Space Grotesk', sans-serif; font-size:1.15rem; font-weight:600; margin-bottom:5px; }
-  .job-head .chev{ font-family:'IBM Plex Mono', monospace; color:var(--trace); font-size:13px; transition:transform .25s; flex:none; }
-  .job.open .job-head .chev{ transform:rotate(90deg); }
-  .job .org{ color:var(--muted); font-size:.94rem; margin-bottom:0; }
-  .job-body{ max-height:0; overflow:hidden; transition:max-height .4s ease; }
-  .job.open .job-body{ max-height:520px; }
-  .job ul{ color:var(--muted); font-size:.95rem; max-width:64ch; padding-left:18px; padding-top:16px; }
-  .job ul li{ margin-bottom:8px; }
+  .snapshot{ padding:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); display:grid; grid-template-columns:repeat(4,1fr); }
+  .snap-cell{ padding:28px 30px; border-left:1px solid var(--line); }
+  .snap-cell:first-child{ border-left:none; }
+  .snap-cell .num{ font-family:'Unbounded', sans-serif; font-weight:600; font-size:2rem; line-height:1; }
+  .snap-cell .lbl{ font-family:'JetBrains Mono', monospace; font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin-top:10px; }
+  @media (max-width:800px){ .snapshot{ grid-template-columns:repeat(2,1fr); } .snap-cell:nth-child(2n+1){ border-left:none; } }
 
+  /* ---------- experience timeline ---------- */
+  .log-wrap{ position:relative; padding-left:26px; }
+  .log-wrap::before{ content:''; position:absolute; left:4px; top:6px; bottom:6px; width:1px; background:var(--line); }
+  .log{ position:relative; padding:0 0 40px; }
+  .log:last-child{ padding-bottom:0; }
+  .log .node-dot{ position:absolute; left:-26px; top:4px; width:11px; height:11px; border-radius:50%; box-shadow:0 0 0 4px var(--bg); }
+  .log-id{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted); letter-spacing:.04em; margin-bottom:8px; }
+  .log-head{ cursor:pointer; display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .log-head .title-wrap{ display:flex; align-items:baseline; gap:12px; }
+  .log-head h3{ font-family:'Unbounded', sans-serif; font-size:1.05rem; font-weight:500; }
+  .log-head .chev{ font-family:'JetBrains Mono', monospace; color:var(--g3); font-size:13px; transition:transform .25s; flex:none; }
+  .log.open .log-head .chev{ transform:rotate(90deg); }
+  .status-pill{ font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.06em; text-transform:uppercase; padding:4px 10px; border-radius:20px; border:1px solid var(--line); color:var(--muted); }
+  .status-pill.current{ border-color:var(--g3); color:var(--g3); }
+  .log .org{ color:var(--muted); font-size:.94rem; margin-top:4px; }
+  .log-body{ max-height:0; overflow:hidden; transition:max-height .4s ease; }
+  .log.open .log-body{ max-height:560px; }
+  .log ul{ color:var(--muted); font-size:.95rem; max-width:64ch; padding-left:18px; padding-top:16px; }
+  .log ul li{ margin-bottom:8px; }
+
+  /* ---------- signal path ---------- */
   .path{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px 0; position:relative; padding-top:6px; }
-  .path::before{ content:''; position:absolute; top:15px; left:0; right:0; height:1px; background:var(--panel-line); z-index:0; }
-  .node{ position:relative; z-index:1; width:calc(100%/7); min-width:118px; text-align:center; }
-  .node .pt{ width:10px; height:10px; border-radius:50%; background:var(--bg); border:2px solid var(--trace); margin:0 auto 14px; }
-  .node .label{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted); letter-spacing:.02em; text-transform:uppercase; }
+  .path::before{ content:''; position:absolute; top:15px; left:0; right:0; height:1px; background:var(--line); z-index:0; }
+  .node{ position:relative; z-index:1; width:calc(100%/7); min-width:112px; text-align:center; }
+  .node .pt{ width:10px; height:10px; border-radius:50%; background:var(--bg); border:2px solid var(--g2); margin:0 auto 14px; }
+  .node .label{ font-family:'JetBrains Mono', monospace; font-size:10.5px; color:var(--muted); letter-spacing:.02em; text-transform:uppercase; }
 
-  .skill-groups{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:34px; }
-  .skill-group h4{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--trace-dim); text-transform:uppercase; letter-spacing:.08em; margin-bottom:14px; }
+  /* ---------- skills ---------- */
+  .skill-groups{ display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:34px; }
+  .skill-group h4{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--g3); text-transform:uppercase; letter-spacing:.08em; margin-bottom:14px; }
   .skill-tags{ display:flex; flex-wrap:wrap; gap:9px; }
-  .skill-tags span{ font-family:'IBM Plex Mono', monospace; font-size:12px; padding:8px 14px; border:1px solid var(--panel-line); border-radius:2px; color:var(--muted); transition:border-color .2s, color .2s; }
-  .skill-tags span:hover{ border-color:var(--trace); color:var(--trace); }
+  .skill-tags span{ font-family:'JetBrains Mono', monospace; font-size:12px; padding:8px 14px; border:1px solid var(--line); border-radius:3px; color:var(--muted); transition:border-color .2s, color .2s; }
+  .skill-tags span:hover{ border-color:var(--g2); color:var(--text); }
 
-  .edu-grid{ display:flex; flex-direction:column; gap:16px; max-width:680px; }
-  .edu-card{ border:1px solid var(--panel-line); border-radius:3px; padding:26px 28px; background:var(--panel); }
-  .edu-card h3{ font-family:'Space Grotesk', sans-serif; font-size:1.08rem; margin-bottom:6px; }
-  .edu-card .org{ color:var(--muted); font-size:.93rem; margin-bottom:14px; }
-  .edu-card .row{ display:flex; justify-content:space-between; font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted); padding:8px 0; border-top:1px solid var(--panel-line); gap:14px; }
-  .edu-card .row span:last-child{ color:var(--text); text-align:right; }
+  /* ---------- education ---------- */
+  .edu-grid{ display:flex; flex-direction:column; gap:16px; max-width:820px; }
+  .edu-card{ border:1px solid var(--line); border-radius:6px; padding:26px 28px; background:var(--panel); display:grid; grid-template-columns:1fr auto; gap:20px; align-items:start; }
+  .edu-card h3{ font-family:'Unbounded', sans-serif; font-size:1rem; font-weight:500; margin-bottom:6px; line-height:1.4; }
+  .edu-card .org{ color:var(--muted); font-size:.93rem; }
+  .edu-card .figures{ font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--muted); text-align:right; white-space:nowrap; }
+  .edu-card .figures b{ display:block; color:var(--g3); font-size:14px; margin-bottom:4px; }
+  @media (max-width:640px){ .edu-card{ grid-template-columns:1fr; } .edu-card .figures{ text-align:left; } }
 
-  .project-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1px; background:var(--panel-line); border:1px solid var(--panel-line); }
-  .project{ background:var(--bg); padding:30px; }
-  .project .tag{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--amber); letter-spacing:.08em; text-transform:uppercase; }
-  .project h3{ font-family:'Space Grotesk', sans-serif; font-size:1.08rem; margin:10px 0 10px; line-height:1.3; }
+  /* ---------- projects ---------- */
+  .project-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:6px; overflow:hidden; }
+  .project{ background:var(--panel); padding:30px; }
+  .project .tag{ font-family:'JetBrains Mono', monospace; font-size:10.5px; color:var(--g3); letter-spacing:.06em; text-transform:uppercase; }
+  .project h3{ font-family:'Unbounded', sans-serif; font-size:1rem; font-weight:500; margin:10px 0 10px; line-height:1.4; }
   .project p{ color:var(--muted); font-size:.92rem; }
 
-  .misc-grid{ display:grid; grid-template-columns:1fr 1fr; gap:50px; }
-  .misc-block h4{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--trace-dim); text-transform:uppercase; letter-spacing:.08em; margin-bottom:16px; }
-  .cert{ border-top:1px solid var(--panel-line); padding:16px 0; }
-  .cert:last-child{ padding-bottom:0; }
-  .cert h5{ font-family:'Space Grotesk', sans-serif; font-size:1rem; font-weight:600; margin-bottom:4px; }
-  .cert .meta{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted); }
+  /* ---------- certifications ---------- */
+  .misc-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:56px; }
+  .misc-block h4{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--g3); text-transform:uppercase; letter-spacing:.08em; margin-bottom:16px; }
+  .cert{ border-top:1px solid var(--line); padding:16px 0; display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; }
+  .cert h5{ font-family:'Unbounded', sans-serif; font-size:.95rem; font-weight:500; }
+  .cert .org{ color:var(--muted); font-size:.85rem; margin-top:3px; }
+  .cert .meta{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted); white-space:nowrap; }
   .interest-tags{ display:flex; flex-wrap:wrap; gap:9px; }
-  .interest-tags span{ font-family:'IBM Plex Mono', monospace; font-size:12px; padding:8px 14px; border:1px solid var(--panel-line); border-radius:2px; color:var(--muted); }
+  .interest-tags span{ font-family:'JetBrains Mono', monospace; font-size:12px; padding:8px 14px; border:1px solid var(--line); border-radius:3px; color:var(--muted); }
 
+  /* ---------- contact ---------- */
   .contact-wrap{ display:flex; flex-direction:column; align-items:flex-start; gap:28px; }
-  .big-link{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:clamp(1.3rem,3.2vw,2rem); text-decoration:none; color:var(--text); display:inline-flex; align-items:center; gap:14px; border-bottom:1px solid var(--panel-line); padding-bottom:14px; }
-  .big-link:hover{ color:var(--trace); border-color:var(--trace); }
-  .contact-list{ display:flex; gap:34px; flex-wrap:wrap; font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--muted); }
+  .big-link{ font-family:'Unbounded', sans-serif; font-weight:500; font-size:clamp(1.1rem,2.6vw,1.7rem); text-decoration:none; display:inline-flex; align-items:center; gap:14px; border-bottom:1px solid var(--line); padding-bottom:14px; }
+  .big-link:hover{ border-color:var(--g2); }
+  .contact-list{ display:flex; gap:34px; flex-wrap:wrap; font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--muted); }
   .contact-list a{ text-decoration:none; }
-  .contact-list a:hover{ color:var(--trace); }
+  .contact-list a:hover{ color:var(--g3); }
+  .signoff{ font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--muted); border-top:1px solid var(--line); padding-top:18px; width:100%; max-width:420px; }
 
-  footer{ padding:34px 6vw 44px; border-top:1px solid var(--panel-line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--muted); }
+  footer{ padding:32px 6vw 44px; border-top:1px solid var(--line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--muted); max-width:1320px; margin:0 auto; }
 
+  @media (max-width:900px){
+    .hero-inner{ grid-template-columns:1fr; }
+    .scope-wrap{ width:140px; order:-1; }
+    .about-grid{ grid-template-columns:1fr; }
+    .misc-grid{ grid-template-columns:1fr; gap:44px; }
+  }
   @media (max-width:800px){
     nav.links{ display:none; }
-    .about-grid{ grid-template-columns:1fr; }
-    .job{ grid-template-columns:1fr; gap:8px; }
-    .misc-grid{ grid-template-columns:1fr; gap:44px; }
     .path{ flex-direction:column; align-items:flex-start; gap:22px; }
     .path::before{ top:0; bottom:0; left:14px; width:1px; height:100%; }
     .node{ width:100%; display:flex; align-items:center; gap:16px; text-align:left; }
     .node .pt{ margin:0; }
   }
-  @media (prefers-reduced-motion: reduce){ #scope{ display:none; } }
+  @media (prefers-reduced-motion: reduce){ #waterfall{ display:none; } }
 </style>
 </head>
 <body>
 
 <header class="nav">
-  <div class="callsign">SHANITHA ALOCHANA</div>
+  <div class="callsign"><span class="dot"></span>SHANITHA ALOCHANA</div>
   <nav class="links">
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
     <a href="#skills">Skills</a>
     <a href="#education">Education</a>
     <a href="#projects">Projects</a>
-    <a href="#more">Certifications</a>
+    <a href="#more">Certs</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
 <section class="hero">
-  <div class="hero-grid"></div>
-  <canvas id="scope"></canvas>
-  <div class="hero-content">
-    <div class="eyebrow">Telecommunications &amp; Networks</div>
-    <h1 class="title">Shanitha Alochana<br><span class="accent">RF Test Engineer</span></h1>
-    <p class="role-line">Electronic &amp; telecommunications engineer contributing to wireless communications through RF testing and optimization, OSS platforms, and network performance analysis — with a research-driven approach across telecom, IoT, and machine learning.</p>
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow"><b>ON AIR</b> Telecommunications &amp; Networks</div>
+      <h1 class="title">Shanitha Alochana —<br><span class="grad-text">RF Test Engineer</span></h1>
+      <p class="role-line">Electronic &amp; telecommunications engineer working across RF testing and optimization, OSS platforms, and network performance analysis — pairing field work in antenna tilt and power tuning with a research-driven approach to telecom, IoT, and machine learning.</p>
 
-    <div class="hero-meta">
-      <div class="stat"><b>Thakshana Technologies</b>RF Test Engineer, since Jun 2026</div>
-      <div class="stat"><b>Elabram Telecommunications</b>OSS &amp; RF Optimization, 2024–2026</div>
-      <div class="stat"><b>SLTC Research University</b>B.Sc (Hons), 2020–2024</div>
+      <div class="career-log">
+        <div class="cl-row"><b>Thakshana Technologies</b><span>RF Test Engineer · since Jun 2026</span></div>
+        <div class="cl-row"><b>Elabram Telecommunications</b><span>OSS &amp; RF Optimization · 2024–2026</span></div>
+        <div class="cl-row"><b>SLTC Research University</b><span>B.Sc (Hons) · 2020–2024</span></div>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn primary" href="#contact">Contact me</a>
+        <a class="btn secondary" href="https://www.linkedin.com/in/shanitha-alochana-729449299/" target="_blank" rel="noopener">View LinkedIn</a>
+      </div>
     </div>
 
-    <div class="hero-actions">
-      <a class="btn primary" href="#contact">Contact Me</a>
-      <a class="btn secondary" href="https://www.linkedin.com/in/shanitha-alochana-729449299/" target="_blank" rel="noopener">View LinkedIn</a>
+    <div class="scope-wrap">
+      <div class="portrait-frame">
+        <img src="portrait.jpg" alt="Portrait of Shanitha Alochana" />
+      </div>
+      <div class="mini-scope">
+        <span class="tag">Live sweep</span>
+        <canvas id="waterfall"></canvas>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="about">
-  <div class="channel-label">01 — About</div>
+  <div class="band-tab"><b>700 MHz</b> — About</div>
   <h2 class="section-title reveal">Profile</h2>
   <div class="about-grid">
     <div class="reveal">
       <p>A dedicated researcher committed to contributing to the field of wireless communication, with a background spanning telecommunications, cyber security, the Internet of Things, machine learning, and networking.</p>
       <p>I aim to bring strong work ethics, adaptability, and a research-driven mindset to organizational objectives — pairing rigorous academic inquiry with hands-on field and network operations experience.</p>
     </div>
-    <div class="readout reveal">
+    <div class="plate reveal">
       <div class="row"><span>Location</span><span>Colombo, Sri Lanka</span></div>
       <div class="row"><span>Phone</span><span>+94 76 749 5733</span></div>
       <div class="row"><span>Email</span><span>shanithalochana@gmail.com</span></div>
       <div class="row"><span>Field</span><span>Wireless Communications</span></div>
-      <div class="row"><span>Availability</span><span style="color:var(--trace)">Open to opportunities</span></div>
+      <div class="row"><span>Availability</span><span style="color:var(--g3)">Open to opportunities</span></div>
     </div>
   </div>
 </section>
 
-<div class="snapshot reveal">
-  <div class="snap-cell"><div class="num" id="statYears">—</div><div class="lbl">Years in telecom</div></div>
-  <div class="snap-cell"><div class="num">4</div><div class="lbl">Roles held</div></div>
-  <div class="snap-cell"><div class="num">2</div><div class="lbl">Certifications</div></div>
-  <div class="snap-cell"><div class="num">5</div><div class="lbl">Engineering projects</div></div>
+<div class="snapshot reveal" style="max-width:1320px; margin:0 auto;">
+  <div class="snap-cell"><div class="num grad-text" id="statYears">—</div><div class="lbl">Years in telecom</div></div>
+  <div class="snap-cell"><div class="num grad-text">4</div><div class="lbl">Roles held</div></div>
+  <div class="snap-cell"><div class="num grad-text">2</div><div class="lbl">Certifications</div></div>
+  <div class="snap-cell"><div class="num grad-text">5</div><div class="lbl">Engineering projects</div></div>
 </div>
 
 <section id="experience">
-  <div class="channel-label">02 — Experience</div>
+  <div class="band-tab"><b>850 MHz</b> — Experience</div>
   <h2 class="section-title reveal">Work experience</h2>
-  <div class="reveal">
-    <div class="job open">
-      <div class="meta">Current<span class="dates">Jun 2026 – Present</span></div>
-      <div>
-        <div class="job-head" data-toggle><span class="chev">▸</span><h3>RF Test Engineer</h3></div>
-        <div class="org">Thakshana Technologies</div>
-        <div class="job-body">
-          <ul>
-            <li>Details to be added — replace this line with your responsibilities and scope in the role.</li>
-          </ul>
-        </div>
+  <div class="log-wrap reveal">
+    <div class="log open">
+      <div class="node-dot" style="background:#FBBF24"></div>
+      <div class="log-id">Jun 2026 – Present</div>
+      <div class="log-head" data-toggle>
+        <div class="title-wrap"><span class="chev">▸</span><h3>RF Test Engineer</h3></div>
+        <span class="status-pill current">Current</span>
+      </div>
+      <div class="org">Thakshana Technologies</div>
+      <div class="log-body">
+        <ul>
+          <li>Details to be added — replace this line with your responsibilities and scope in the role.</li>
+        </ul>
       </div>
     </div>
-    <div class="job">
-      <div class="meta">Previous<span class="dates">Jun 2025 – Jun 2026</span></div>
-      <div>
-        <div class="job-head" data-toggle><span class="chev">▸</span><h3>Operations Support Systems Engineer</h3></div>
-        <div class="org">Elabram Telecommunications (Thailand subsidiary) — Colombo, Sri Lanka</div>
-        <div class="job-body">
-          <ul>
-            <li>Operating the UME ElasticNet OSS platform for live network monitoring, control, and optimization.</li>
-            <li>Supporting NGI (Network Geolocation Insight) analysis for event detection, coverage visualization, and identification of weak-signal areas.</li>
-            <li>Preparing KPI and neighbor parameter reports to assist RF teams in troubleshooting and performance optimization.</li>
-            <li>Monitoring alarms, counters, and KPIs to ensure network stability and high service quality.</li>
-            <li>Executing antenna tilt and power tuning to balance coverage, enhance signal quality, and minimize interference.</li>
-            <li>Delivering FAC (Final Acceptance Certificate) presentations and reports to stakeholders to support project acceptance and closure decisions.</li>
-          </ul>
-        </div>
+    <div class="log">
+      <div class="node-dot" style="background:#C026D3"></div>
+      <div class="log-id">Jun 2025 – Jun 2026</div>
+      <div class="log-head" data-toggle>
+        <div class="title-wrap"><span class="chev">▸</span><h3>Operations Support Systems Engineer</h3></div>
+        <span class="status-pill">Previous</span>
+      </div>
+      <div class="org">Elabram Telecommunications (Thailand subsidiary) — Colombo, Sri Lanka</div>
+      <div class="log-body">
+        <ul>
+          <li>Operating the UME ElasticNet OSS platform for live network monitoring, control, and optimization.</li>
+          <li>Supporting NGI (Network Geolocation Insight) analysis for event detection, coverage visualization, and identification of weak-signal areas.</li>
+          <li>Preparing KPI and neighbor parameter reports to assist RF teams in troubleshooting and performance optimization.</li>
+          <li>Monitoring alarms, counters, and KPIs to ensure network stability and high service quality.</li>
+          <li>Executing antenna tilt and power tuning to balance coverage, enhance signal quality, and minimize interference.</li>
+          <li>Delivering FAC (Final Acceptance Certificate) presentations and reports to stakeholders to support project acceptance and closure decisions.</li>
+        </ul>
       </div>
     </div>
-    <div class="job">
-      <div class="meta">Previous<span class="dates">Dec 2024 – May 2025</span></div>
-      <div>
-        <div class="job-head" data-toggle><span class="chev">▸</span><h3>RF Optimization Engineer</h3></div>
-        <div class="org">Elabram Telecommunications (Thailand subsidiary) — Colombo, Sri Lanka</div>
-        <div class="job-body">
-          <ul>
-            <li>Performed SSV (Single Site Verification) activities for 2G, 3G, 4G, and 5G sites across multiple frequency bands.</li>
-            <li>Verified site KPIs and parameter compliance with network acceptance criteria.</li>
-            <li>Analyzed and compared radio parameters using drive test data to identify optimization opportunities.</li>
-            <li>Optimized network coverage and signal quality by analyzing drive test results and implementing corrective actions.</li>
-          </ul>
-        </div>
+    <div class="log">
+      <div class="node-dot" style="background:#8B2FA0"></div>
+      <div class="log-id">Dec 2024 – May 2025</div>
+      <div class="log-head" data-toggle>
+        <div class="title-wrap"><span class="chev">▸</span><h3>RF Optimization Engineer</h3></div>
+        <span class="status-pill">Previous</span>
+      </div>
+      <div class="org">Elabram Telecommunications (Thailand subsidiary) — Colombo, Sri Lanka</div>
+      <div class="log-body">
+        <ul>
+          <li>Performed SSV (Single Site Verification) activities for 2G, 3G, 4G, and 5G sites across multiple frequency bands.</li>
+          <li>Verified site KPIs and parameter compliance with network acceptance criteria.</li>
+          <li>Analyzed and compared radio parameters using drive test data to identify optimization opportunities.</li>
+          <li>Optimized network coverage and signal quality by analyzing drive test results and implementing corrective actions.</li>
+        </ul>
       </div>
     </div>
-    <div class="job">
-      <div class="meta">Previous<span class="dates">Sep 2023 – Apr 2024</span></div>
-      <div>
-        <div class="job-head" data-toggle><span class="chev">▸</span><h3>Trainee International Voice and CEM DevOps Engineer</h3></div>
-        <div class="org">Dialog Axiata PLC — Colombo, Sri Lanka</div>
-        <div class="job-body">
-          <ul>
-            <li>Gained hands-on experience with voice communication technologies, including VoIP and SIP.</li>
-            <li>Strengthened troubleshooting and analytical skills through practical network and service performance monitoring.</li>
-            <li>Performed trunk reconciliation analysis between Ribbon Softswitch and SBC billing systems.</li>
-            <li>Supported CEM to GDE migration by coordinating access issue resolution with technical teams.</li>
-            <li>Assisted in fine-tuning an IDD fraud detection tool by consolidating MSRN data from IR21 documents.</li>
-            <li>Documented Huawei CEM metadata and data dictionaries to improve data governance.</li>
-          </ul>
-        </div>
+    <div class="log">
+      <div class="node-dot" style="background:#5B21B6"></div>
+      <div class="log-id">Sep 2023 – Apr 2024</div>
+      <div class="log-head" data-toggle>
+        <div class="title-wrap"><span class="chev">▸</span><h3>Trainee International Voice and CEM DevOps Engineer</h3></div>
+        <span class="status-pill">Previous</span>
+      </div>
+      <div class="org">Dialog Axiata PLC — Colombo, Sri Lanka</div>
+      <div class="log-body">
+        <ul>
+          <li>Gained hands-on experience with voice communication technologies, including VoIP and SIP.</li>
+          <li>Strengthened troubleshooting and analytical skills through practical network and service performance monitoring.</li>
+          <li>Performed trunk reconciliation analysis between Ribbon Softswitch and SBC billing systems.</li>
+          <li>Supported CEM to GDE migration by coordinating access issue resolution with technical teams.</li>
+          <li>Assisted in fine-tuning an IDD fraud detection tool by consolidating MSRN data from IR21 documents.</li>
+          <li>Documented Huawei CEM metadata and data dictionaries to improve data governance.</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
 <section id="process">
-  <div class="channel-label">03 — Approach</div>
-  <h2 class="section-title reveal">How I approach network optimization</h2>
+  <div class="band-tab"><b>1800 MHz</b> — Approach</div>
+  <h2 class="section-title reveal">Signal path: how I approach optimization</h2>
   <div class="path reveal">
     <div class="node"><div class="pt"></div><div class="label">Site<br>Survey</div></div>
     <div class="node"><div class="pt"></div><div class="label">KPI<br>Review</div></div>
@@ -298,7 +353,7 @@
 </section>
 
 <section id="skills">
-  <div class="channel-label">04 — Skills</div>
+  <div class="band-tab"><b>2100 MHz</b> — Skills</div>
   <h2 class="section-title reveal">Technical &amp; professional skills</h2>
   <div class="skill-groups reveal">
     <div class="skill-group">
@@ -325,30 +380,35 @@
 </section>
 
 <section id="education">
-  <div class="channel-label">05 — Education</div>
+  <div class="band-tab"><b>2600 MHz</b> — Education</div>
   <h2 class="section-title reveal">Academic background</h2>
   <div class="edu-grid reveal">
     <div class="edu-card">
-      <h3>B.Sc. Eng. (Hons.) in Electronic and Telecommunication Engineering</h3>
-      <div class="org">SLTC Research University — Meepe, Sri Lanka</div>
-      <div class="row"><span>Duration</span><span>Feb 2020 – Dec 2024</span></div>
-      <div class="row"><span>GPA</span><span>2.91</span></div>
+      <div>
+        <h3>B.Sc. Eng. (Hons.) in Electronic and Telecommunication Engineering</h3>
+        <div class="org">SLTC Research University — Meepe, Sri Lanka</div>
+      </div>
+      <div class="figures"><b>2.91 GPA</b>Feb 2020 – Dec 2024</div>
     </div>
     <div class="edu-card">
-      <h3>G.C.E. Advanced Level Examination — Physical Science Stream</h3>
-      <div class="org">Bandarawela Central College — Bandarawela, Sri Lanka</div>
-      <div class="row"><span>Duration</span><span>Mar 2017 – Aug 2019</span></div>
+      <div>
+        <h3>G.C.E. Advanced Level Examination — Physical Science Stream</h3>
+        <div class="org">Bandarawela Central College — Bandarawela, Sri Lanka</div>
+      </div>
+      <div class="figures">Mar 2017 – Aug 2019</div>
     </div>
     <div class="edu-card">
-      <h3>G.C.E. Ordinary Level Examination</h3>
-      <div class="org">Bandarawela Central College — Bandarawela, Sri Lanka</div>
-      <div class="row"><span>Duration</span><span>Jan 2011 – Dec 2016</span></div>
+      <div>
+        <h3>G.C.E. Ordinary Level Examination</h3>
+        <div class="org">Bandarawela Central College — Bandarawela, Sri Lanka</div>
+      </div>
+      <div class="figures">Jan 2011 – Dec 2016</div>
     </div>
   </div>
 </section>
 
 <section id="projects">
-  <div class="channel-label">06 — Projects</div>
+  <div class="band-tab"><b>3500 MHz</b> — Projects</div>
   <h2 class="section-title reveal">Selected projects</h2>
   <div class="project-grid reveal">
     <div class="project">
@@ -380,22 +440,31 @@
 </section>
 
 <section id="more">
-  <div class="channel-label">07 — Certifications &amp; Interests</div>
+  <div class="band-tab"><b>4900 MHz</b> — Certifications</div>
   <h2 class="section-title reveal">Certifications, memberships &amp; interests</h2>
   <div class="misc-grid reveal">
     <div class="misc-block">
       <h4>Courses &amp; Certificates</h4>
       <div class="cert">
-        <h5>Cisco Certified Network Associate (CCNA)</h5>
-        <div class="meta">University of Moratuwa — Oct 2023 to Nov 2024</div>
+        <div>
+          <h5>Cisco Certified Network Associate (CCNA)</h5>
+          <div class="org">University of Moratuwa</div>
+        </div>
+        <div class="meta">Oct 2023 – Nov 2024</div>
       </div>
       <div class="cert">
-        <h5>AWS Academy Graduate — AWS Academy Cloud Foundations</h5>
-        <div class="meta">AWS Academy — Sep 2023 to Dec 2023</div>
+        <div>
+          <h5>AWS Academy Graduate — Cloud Foundations</h5>
+          <div class="org">AWS Academy</div>
+        </div>
+        <div class="meta">Sep 2023 – Dec 2023</div>
       </div>
       <div class="cert">
-        <h5>Member, Electrical and Electronics Engineers (EEE)</h5>
-        <div class="meta">Professional Membership — Dec 2022 to Present</div>
+        <div>
+          <h5>Member, Electrical and Electronics Engineers (EEE)</h5>
+          <div class="org">Professional Membership</div>
+        </div>
+        <div class="meta">Dec 2022 – Present</div>
       </div>
     </div>
     <div class="misc-block">
@@ -410,21 +479,22 @@
 </section>
 
 <section id="contact">
-  <div class="channel-label">08 — Contact</div>
+  <div class="band-tab"><b>26 GHz</b> — Contact</div>
   <h2 class="section-title reveal">Get in touch</h2>
   <div class="contact-wrap reveal">
-    <a class="big-link" href="mailto:shanithalochana@gmail.com">shanithalochana@gmail.com ↗</a>
+    <a class="big-link grad-text" href="mailto:shanithalochana@gmail.com">shanithalochana@gmail.com ↗</a>
     <div class="contact-list">
       <a href="tel:+94767495733">+94 76 749 5733</a>
       <a href="https://www.linkedin.com/in/shanitha-alochana-729449299/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="#">Colombo, Sri Lanka</a>
     </div>
+    <div class="signoff">Prepared by Shanitha Alochana · <span id="docDate"></span></div>
   </div>
 </section>
 
 <footer>
   <div>© 2026 Shanitha Alochana</div>
-  <div>Operations Support Systems Engineer</div>
+  <div>RF Test Engineer</div>
 </footer>
 
 <script>
@@ -434,50 +504,80 @@
   }, { threshold:.15 });
   revealEls.forEach(el=> io.observe(el));
 
-  /* Experience accordion */
   document.querySelectorAll('[data-toggle]').forEach(head=>{
     head.addEventListener('click', ()=>{
-      const job = head.closest('.job');
-      job.classList.toggle('open');
+      const log = head.closest('.log');
+      log.classList.toggle('open');
     });
   });
 
-  /* Live-computed years of experience, counted from career start */
-  const careerStart = new Date(2023, 8, 1); // Sep 2023
+  const careerStart = new Date(2023, 8, 1);
   const now = new Date();
   let years = (now - careerStart) / (1000*60*60*24*365.25);
   document.getElementById('statYears').textContent = years.toFixed(1) + '+';
+  document.getElementById('docDate').textContent = now.toLocaleDateString('en-GB', { year:'numeric', month:'short', day:'2-digit' });
 
-  const canvas = document.getElementById('scope');
-  const ctx = canvas.getContext('2d');
-  let w, h, dpr = Math.min(window.devicePixelRatio || 1, 2);
-  function resize(){
-    w = canvas.offsetWidth; h = canvas.offsetHeight;
-    canvas.width = w * dpr; canvas.height = h * dpr;
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-  }
-  window.addEventListener('resize', resize);
-  resize();
-
+  /* Spectrum waterfall */
+  const canvas = document.getElementById('waterfall');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let t = 0;
-  function draw(){
-    ctx.clearRect(0,0,w,h);
-    const midY = h * 0.62;
-    const amp = h * 0.06;
-    ctx.beginPath();
-    ctx.strokeStyle = 'rgba(95, 201, 168, 0.35)';
-    ctx.lineWidth = 1.4;
-    for(let x=0; x<=w; x+=5){
-      const nx = x / w;
-      const y = midY + Math.sin(nx * 10 + t) * amp * (0.5 + 0.5*Math.sin(nx*2.4 - t*0.3));
-      if(x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+  if(canvas && !reduce){
+    const ctx = canvas.getContext('2d');
+    let w, h, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    function resize(){
+      const rect = canvas.getBoundingClientRect();
+      w = Math.floor(rect.width); h = Math.floor(rect.height);
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
     }
-    ctx.stroke();
-    t += reduce ? 0 : 0.006;
-    requestAnimationFrame(draw);
+    window.addEventListener('resize', resize);
+    resize();
+
+    const stops = [
+      [0.00, [18,14,25]],
+      [0.35, [91,33,182]],
+      [0.65, [192,38,211]],
+      [0.85, [251,113,133]],
+      [1.00, [251,191,36]]
+    ];
+    function colorFor(v){
+      for(let i=0;i<stops.length-1;i++){
+        const [p0,c0]=stops[i], [p1,c1]=stops[i+1];
+        if(v>=p0 && v<=p1){
+          const t=(v-p0)/(p1-p0);
+          return [
+            Math.round(c0[0]+(c1[0]-c0[0])*t),
+            Math.round(c0[1]+(c1[1]-c0[1])*t),
+            Math.round(c0[2]+(c1[2]-c0[2])*t)
+          ];
+        }
+      }
+      return stops[stops.length-1][1];
+    }
+
+    let t = 0;
+    const cols = 96;
+    function drawRow(){
+      ctx.drawImage(canvas, 0, 0, w, h - 1, 0, 1, w, h - 1);
+      const colWidth = w / cols;
+      for(let i=0;i<cols;i++){
+        const nx = i/cols;
+        let v = 0.10
+          + 0.25*Math.max(0, Math.sin(nx*14 + t*1.3))
+          + 0.5*Math.exp(-Math.pow((nx-0.3-0.05*Math.sin(t*0.4))*10,2))
+          + 0.65*Math.exp(-Math.pow((nx-0.68-0.04*Math.cos(t*0.6))*14,2))
+          + Math.random()*0.06;
+        v = Math.min(1, Math.max(0, v));
+        const [r,g,b] = colorFor(v);
+        ctx.fillStyle = `rgb(${r},${g},${b})`;
+        ctx.fillRect(i*colWidth, 0, colWidth+1, 1);
+      }
+      t += 0.05;
+      requestAnimationFrame(drawRow);
+    }
+    ctx.fillStyle = '#120E19';
+    ctx.fillRect(0,0,w,h);
+    drawRow();
   }
-  draw();
 </script>
 </body>
 </html>
