@@ -8,29 +8,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#120E19;
-    --panel:#1B1526;
-    --panel-2:#221A32;
-    --line:#362B48;
-    --text:#F1ECF7;
-    --muted:#A79EBC;
-    --g1:#5B21B6;
-    --g2:#C026D3;
-    --g3:#FBBF24;
-    --accent:#D446D9;
+    --bg:#1D2625;
+    --panel:#26302F;
+    --panel-2:#324140;
+    --line:#3E4A49;
+    --text:#F3EFEA;
+    --muted:#B9B0B2;
+    --g1:#3A5154;
+    --g2:#929AA2;
+    --g3:#B7673C;
+    --accent:#B7673C;
     --gradient:linear-gradient(100deg, var(--g1) 0%, var(--g2) 52%, var(--g3) 100%);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
   body{
     background:
-      radial-gradient(ellipse 80% 50% at 15% -10%, rgba(91,33,182,.25), transparent 60%),
-      radial-gradient(ellipse 70% 40% at 100% 0%, rgba(251,191,36,.10), transparent 55%),
+      radial-gradient(ellipse 80% 50% at 15% -10%, rgba(58,81,84,.35), transparent 60%),
+      radial-gradient(ellipse 70% 40% at 100% 0%, rgba(183,103,60,.14), transparent 55%),
       var(--bg);
     color:var(--text); font-family:'Inter', sans-serif; line-height:1.65; overflow-x:hidden;
   }
   a{ color:inherit; }
-  ::selection{ background:var(--g2); color:#120E19; }
+  ::selection{ background:var(--g2); color:#1D2625; }
   .grad-text{ background:var(--gradient); -webkit-background-clip:text; background-clip:text; color:transparent; }
 
   header.nav{
@@ -66,7 +66,7 @@
 
   .hero-actions{ margin-top:36px; display:flex; gap:14px; flex-wrap:wrap; }
   .btn{ font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:.03em; padding:13px 26px; border-radius:3px; text-decoration:none; transition:all .2s; display:inline-block; }
-  .btn.primary{ background:var(--gradient); color:#160B1F; font-weight:600; }
+  .btn.primary{ background:var(--gradient); color:#1A211F; font-weight:600; }
   .btn.primary:hover{ filter:brightness(1.12); }
   .btn.secondary{ border:1px solid var(--line); color:var(--text); }
   .btn.secondary:hover{ border-color:var(--g2); color:var(--g3); }
@@ -267,7 +267,7 @@
   <h2 class="section-title reveal">Work experience</h2>
   <div class="log-wrap reveal">
     <div class="log open">
-      <div class="node-dot" style="background:#FBBF24"></div>
+      <div class="node-dot" style="background:#B7673C"></div>
       <div class="log-id">Jun 2026 – Present</div>
       <div class="log-head" data-toggle>
         <div class="title-wrap"><span class="chev">▸</span><h3>RF Test Engineer</h3></div>
@@ -281,7 +281,7 @@
       </div>
     </div>
     <div class="log">
-      <div class="node-dot" style="background:#C026D3"></div>
+      <div class="node-dot" style="background:#929AA2"></div>
       <div class="log-id">Jun 2025 – Jun 2026</div>
       <div class="log-head" data-toggle>
         <div class="title-wrap"><span class="chev">▸</span><h3>Operations Support Systems Engineer</h3></div>
@@ -300,7 +300,7 @@
       </div>
     </div>
     <div class="log">
-      <div class="node-dot" style="background:#8B2FA0"></div>
+      <div class="node-dot" style="background:#5F787A"></div>
       <div class="log-id">Dec 2024 – May 2025</div>
       <div class="log-head" data-toggle>
         <div class="title-wrap"><span class="chev">▸</span><h3>RF Optimization Engineer</h3></div>
@@ -317,7 +317,7 @@
       </div>
     </div>
     <div class="log">
-      <div class="node-dot" style="background:#5B21B6"></div>
+      <div class="node-dot" style="background:#3A5154"></div>
       <div class="log-id">Sep 2023 – Apr 2024</div>
       <div class="log-head" data-toggle>
         <div class="title-wrap"><span class="chev">▸</span><h3>Trainee International Voice and CEM DevOps Engineer</h3></div>
@@ -533,11 +533,11 @@
     resize();
 
     const stops = [
-      [0.00, [18,14,25]],
-      [0.35, [91,33,182]],
-      [0.65, [192,38,211]],
-      [0.85, [251,113,133]],
-      [1.00, [251,191,36]]
+      [0.00, [29,38,37]],
+      [0.35, [58,81,84]],
+      [0.65, [146,154,162]],
+      [0.85, [174,124,90]],
+      [1.00, [183,103,60]]
     ];
     function colorFor(v){
       for(let i=0;i<stops.length-1;i++){
