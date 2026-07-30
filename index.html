@@ -52,7 +52,7 @@
 
   /* ---------- HERO ---------- */
   .hero{ min-height:94svh; display:flex; align-items:center; padding:150px 6vw 70px; max-width:none; }
-  .hero-inner{ display:grid; grid-template-columns:1fr auto; gap:48px; align-items:start; max-width:1320px; margin:0 auto; width:100%; }
+  .hero-inner{ display:grid; grid-template-columns:1fr auto; gap:48px; align-items:start; max-width:1520px; margin:0 auto; width:100%; }
   .eyebrow{ font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; margin-bottom:22px; display:flex; align-items:center; gap:10px; color:var(--muted); }
   .eyebrow b{ color:var(--g3); font-weight:600; letter-spacing:.06em; }
   h1.title{ font-family:'Unbounded', sans-serif; font-weight:600; font-size:clamp(2rem, 3.9vw, 3.4rem); line-height:1.14; letter-spacing:-.01em; }
@@ -131,8 +131,8 @@
     50%{ box-shadow:0 0 8px 1px rgba(183,103,60,.35); }
   }
   .log .org{ color:var(--muted); font-size:.94rem; margin-top:4px; display:flex; align-items:center; gap:9px; }
-  .org-logo{ display:inline-flex; align-items:center; justify-content:center; background:#FFFFFF; border-radius:5px; padding:4px 8px; flex:none; box-shadow:0 3px 8px rgba(0,0,0,.28); }
-  .org-logo img{ height:13px; width:auto; display:block; }
+  .org-logo{ display:inline-flex; align-items:center; justify-content:center; background:#FFFFFF; border-radius:6px; padding:5px 9px; flex:none; box-shadow:0 3px 8px rgba(0,0,0,.28); width:64px; height:26px; box-sizing:content-box; }
+  .org-logo img{ height:100%; width:100%; object-fit:contain; display:block; }
   .log-body{ max-height:0; overflow:hidden; transition:max-height .4s ease; }
   .log.open .log-body{ max-height:560px; }
   .log ul{ color:var(--muted); font-size:.95rem; max-width:64ch; padding-left:18px; padding-top:16px; }
